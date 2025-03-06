@@ -139,18 +139,22 @@ def run():
             random_seed=random_seed,
             imbalance=imbalance
         )
+        st.session_state["iid_dataset"] = df
 
-        st.subheader("Preview of IID Dataset")
-        st.dataframe(df.head())
-        # Add the full dataset download option
-        csv = df.to_csv(index=False).encode('utf-8')
+        if "iid_dataset" in st.session_state:
+            df = st.session_state["iid_dataset"]
 
-        st.download_button(
-            label="📥 Download Full Dataset as CSV",
-            data=csv,
-            file_name='IID_dataset.csv',
-            mime='text/csv'
-        )
+            st.subheader("Preview of IID Dataset")
+            st.dataframe(df.head())
+
+            csv = df.to_csv(index=False).encode('utf-8')
+
+            st.download_button(
+                label="📥 Download Full Dataset as CSV",
+                data=csv,
+                file_name='IID_dataset.csv',
+                mime='text/csv'
+            )
 
         # Plot target distribution
         st.subheader("Target Distribution")

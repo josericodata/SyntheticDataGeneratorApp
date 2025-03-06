@@ -10,7 +10,7 @@ from sklearn.feature_selection import mutual_info_classif
 import matplotlib
 matplotlib.use("agg")
 
-def generate_fully_non_iid_data_with_scale(num_samples, num_features, num_classes, random_seed, imbalance):
+def non_iid_dataset(num_samples, num_features, num_classes, random_seed, imbalance):
     """
     Generate Non-IID data where:
       - ALL features depend on the target class.
@@ -108,25 +108,29 @@ def run():
     imbalance = st.sidebar.checkbox("Introduce class imbalance?", value=False)
 
     if st.button("Generate Non-IID Data"):
-        df = generate_fully_non_iid_data_with_scale(
+        df = non_iid_dataset(
             num_samples=num_samples,
             num_features=num_features,
             num_classes=num_classes,
             random_seed=random_seed,
             imbalance=imbalance
         )
+        st.session_state["non_iid_dataset"] = df
 
-        st.subheader("Preview of Fully Non-IID Dataset")
-        st.dataframe(df.head())
-        # Add the full dataset download option
-        csv = df.to_csv(index=False).encode('utf-8')
+        if "non_iid_dataset" in st.session_state:
+            df = st.session_state["non_iid_dataset"]
 
-        st.download_button(
-            label="📥 Download Full Dataset as CSV",
-            data=csv,
-            file_name='Non_IID_dataset.csv',
-            mime='text/csv'
-        )
+            st.subheader("Preview of Non IID Dataset")
+            st.dataframe(df.head())
+
+            csv = df.to_csv(index=False).encode('utf-8')
+
+            st.download_button(
+                label="📥 Download Full Dataset as CSV",
+                data=csv,
+                file_name='Non_IID_dataset.csv',
+                mime='text/csv'
+            )
 
         # Target distribution
         st.subheader("Target Class Distribution")
