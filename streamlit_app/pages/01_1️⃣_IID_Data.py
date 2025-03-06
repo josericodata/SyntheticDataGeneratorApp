@@ -142,6 +142,15 @@ def run():
 
         st.subheader("Preview of IID Dataset")
         st.dataframe(df.head())
+        # Add the full dataset download option
+        csv = df.to_csv(index=False).encode('utf-8')
+
+        st.download_button(
+            label="📥 Download Full Dataset as CSV",
+            data=csv,
+            file_name='IID_dataset.csv',
+            mime='text/csv'
+        )
 
         # Plot target distribution
         st.subheader("Target Distribution")
