@@ -1,0 +1,6 @@
+[theme]
+primaryColor = "#FF6F61"  # Coral Red for buttons and accents
+backgroundColor = "#1E1E2F"  # Deep Navy Blue background
+secondaryBackgroundColor = "#292944"  # Slightly lighter for sidebar and widgets
+textColor = "#FFFFFF"  # Pure white text
+font = "sans serif"
