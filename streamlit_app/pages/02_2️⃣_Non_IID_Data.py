@@ -126,6 +126,21 @@ def run():
             ax.set_title("Feature Correlation Heatmap")
             fig.tight_layout()
             st.pyplot(fig)
+            
+            # Explanation of correlation matrix
+            st.markdown(
+                """
+                **How to Interpret the Correlation Matrix**  
+                - Each cell shows the **pairwise Pearson correlation** between two features.
+                - **Values range** from -1 to +1:
+                  - **+1**: perfect positive linear relationship
+                  - **-1**: perfect negative linear relationship
+                  - **0**: no linear relationship
+                - **Color Scale**: Red = positive correlation, Blue = negative correlation.
+                - Larger absolute values suggest stronger linear relationships.
+                - Correlation **does not** capture non-linear dependencies.
+                """
+            )
 
         # Mutual Information
         st.subheader("Mutual Information (Features vs. Target)")
@@ -139,10 +154,19 @@ def run():
         ax.set_title("Mutual Information Scores")
         fig.tight_layout()
         st.pyplot(fig)
+        
+        
+        st.markdown("""
+        **Interpretation**:  
+        With per-class means and scales, **all** features tend to show
+        a strong mutual information with the target.
+        """)
+        
+        
 
         # Chi-Square Test
         st.subheader("Chi-Square Tests (Feature vs. Target)")
-        chi_results = [(feat, calculate_chi_square(df, feat, 'Target')) for feat in df.columns[:-1]]
+        chi_results = [(feat, f"{calculate_chi_square(df, feat, 'Target'):.2f}") for feat in df.columns[:-1]]
         chi_df = pd.DataFrame(chi_results, columns=['Feature', 'p-value'])
 
         st.dataframe(chi_df)

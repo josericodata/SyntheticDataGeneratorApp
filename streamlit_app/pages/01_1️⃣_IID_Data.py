@@ -70,8 +70,8 @@ def run():
     # Sidebar inputs
     st.sidebar.header("Generation Settings")
     num_samples = st.sidebar.number_input("Number of samples", 100, 100000, 1000)
-    num_features = st.sidebar.slider("Number of features", 2, 10, 5)
-    num_classes = st.sidebar.slider("Number of classes (target)", 2, 10, 3)
+    num_features = st.sidebar.slider("Number of features", 2, 10, 2)
+    num_classes = st.sidebar.slider("Number of classes (target)", 2, 10, 2)
     random_seed = st.sidebar.number_input("Random Seed", 0, 999999, 42)
     imbalance = st.sidebar.checkbox("Introduce class imbalance?", value=False)
 
@@ -111,6 +111,21 @@ def run():
             ax.set_title("Feature Correlation Heatmap")
             fig.tight_layout()
             st.pyplot(fig)
+        
+        # Explanation of correlation matrix
+            st.markdown(
+                """
+                **How to Interpret the Correlation Matrix**  
+                - Each cell shows the **pairwise Pearson correlation** between two features.
+                - **Values range** from -1 to +1:
+                  - **+1**: perfect positive linear relationship
+                  - **-1**: perfect negative linear relationship
+                  - **0**: no linear relationship
+                - **Color Scale**: Red = positive correlation, Blue = negative correlation.
+                - Larger absolute values suggest stronger linear relationships.
+                - Correlation **does not** capture non-linear dependencies.
+                """
+            )
 
         # Mutual Information
         st.subheader("Mutual Information (Features vs. Target)")
@@ -124,6 +139,15 @@ def run():
         ax.set_title("Mutual Information Scores")
         fig.tight_layout()
         st.pyplot(fig)
+        
+        st.markdown(
+            """
+            **What is Mutual Information (MI)?**  
+            MI measures how much knowing a feature reduces uncertainty about the target.  
+            - **Higher MI** indicates a stronger relationship between the feature and the target.  
+            - **Lower MI** suggests the feature and target are closer to independent.
+            """
+        )
 
         # Chi-Square Test
         st.subheader("Chi-Square Tests (Feature vs. Target)")
