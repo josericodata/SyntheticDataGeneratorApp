@@ -92,7 +92,7 @@ The **Synthetic Data Generator** leverages the following **Python libraries**:
 ## 🎬 Demo  
 
 ### **Synthetic Data Generator App**
-![Synthetic Data Generator](https://github.com/josericodata/SyntheticDataGeneratorApp/tree/main/assets/gifs)
+![Synthetic Data Generator](https://github.com/josericodata/SyntheticDataGeneratorApp/tree/main/assets/gifs/dataGeneratorApp.gif)
 
 ---
 
