@@ -85,8 +85,8 @@ def run():
     # Sidebar inputs
     st.sidebar.header("Generation Settings")
     num_samples = st.sidebar.number_input("Number of samples", 100, 100000, 1000)
-    num_features = st.sidebar.slider("Number of features", 2, 10, 5)
-    num_classes = st.sidebar.slider("Number of classes (target)", 2, 10, 3)
+    num_features = st.sidebar.slider("Number of features", 2, 10, 2)
+    num_classes = st.sidebar.slider("Number of classes (target)", 2, 10, 2)
     random_seed = st.sidebar.number_input("Random Seed", 0, 999999, 42)
     imbalance = st.sidebar.checkbox("Introduce class imbalance?", value=False)
 
