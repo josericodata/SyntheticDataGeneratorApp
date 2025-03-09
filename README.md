@@ -1,4 +1,4 @@
-# 📊 **Synthetic Data Generator**
+# 📊 **Synthetic Data Generator (Streamlit)**
 
 **The Synthetic Data Generator is a tool for generating IID (Independent and Identically Distributed) and Non-IID datasets with customisable parameters. Built with Python and Streamlit, this app enables users to create structured synthetic data for machine learning, research, and data exploration.**
 
@@ -92,7 +92,7 @@ The **Synthetic Data Generator** leverages the following **Python libraries**:
 ## 🎬 Demo  
 
 ### **Synthetic Data Generator App**
-![Synthetic Data Generator](https://raw.githubusercontent.com/josericodata/SyntheticDataGeneratorApp/main/assets/dataGeneratorApp.gif)
+![Synthetic Data Generator](https://github.com/josericodata/SyntheticDataGeneratorApp/tree/main/assets/gifs)
 
 ---
 
